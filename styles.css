@@ -1,0 +1,209 @@
+/* Scandinavian mid-century modern — Fredrik Backman */
+
+:root {
+  --cream: #f5f0e8;
+  --warm-white: #faf8f5;
+  --sand: #e8e0d4;
+  --teal: #2d5a5a;
+  --teal-light: #3d6b6b;
+  --amber: #c4a35a;
+  --amber-muted: #b8994a;
+  --charcoal: #2c2c2a;
+  --gray: #6b6560;
+  --shadow: rgba(44, 44, 42, 0.08);
+  --radius: 6px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background: painted gradient evoking My Friends / Scandinavian warmth — no image file needed */
+.background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(165deg,
+    #e8e0d6 0%,
+    #dfd6c8 18%,
+    #d4c9b8 35%,
+    #c9bcab 50%,
+    #c4b59f 65%,
+    #d2c8b8 82%,
+    #e2dacf 100%
+  );
+  z-index: 0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 240, 232, 0.92) 0%,
+    rgba(245, 240, 232, 0.85) 35%,
+    rgba(245, 240, 232, 0.94) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.header,
+.books {
+  position: relative;
+  z-index: 2;
+}
+
+/* Header: author photo top left + intro */
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem 3rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+@media (max-width: 700px) {
+  .header {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem 3rem;
+  }
+}
+
+.author-photo {
+  width: clamp(140px, 18vw, 200px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px var(--shadow);
+  border: 3px solid var(--warm-white);
+}
+
+.intro-block {
+  padding-top: 0.25rem;
+}
+
+.title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  color: var(--teal);
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+}
+
+.intro {
+  font-size: 1rem;
+  color: var(--charcoal);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.intro em {
+  font-style: italic;
+  color: var(--teal);
+}
+
+/* Books section */
+.books {
+  margin-top: auto;
+  padding: 2.5rem 2rem 3.5rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(245, 240, 232, 0.6) 15%,
+    rgba(232, 224, 212, 0.95) 100%
+  );
+}
+
+.books-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 0 0 1.75rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.book-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .book-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--charcoal);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  color: var(--teal);
+}
+
+.book-card img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px var(--shadow);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: var(--sand);
+}
+
+.book-card span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 0.6rem;
+  line-height: 1.35;
+  max-width: 100%;
+}
